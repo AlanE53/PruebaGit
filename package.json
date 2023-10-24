@@ -1,0 +1,23 @@
+{
+  "name": "pruebagit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanE53/PruebaGit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanE53/PruebaGit/issues"
+  },
+  "homepage": "https://github.com/AlanE53/PruebaGit#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
