@@ -1,22 +1,20 @@
 import express from 'express'
 import mongoose from 'mongoose';
+import 'dotenv/config'
+
 import Computer from './models/computer.model.js';
 
 const app = express()
-
 app.use(express.json());
 
 const port = 3000
-// Connection URL
-const dbUrl = 'mongodb://127.0.0.1';
-
-// Database Name
-const dbName = 'test';
-
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(`${dbUrl}/${dbName}`);
+    // await mongoose.connect(`${dbUrl}/${dbName}`);
+    await mongoose.connect(process.env.MONGOOSE_KEY, {
+      useNewUrlParser: true
+    });
     console.log("DB is connected");
   } catch (error) {
     console.error(error);
@@ -58,6 +56,6 @@ app.post('/computers', async (req, res) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`)
+app.listen(process.env.PORT, () => {
+  console.log(`App listening on port ${process.env.PORT}`)
 })
