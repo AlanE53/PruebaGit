@@ -2,12 +2,10 @@ import express from 'express'
 import mongoose from 'mongoose';
 import 'dotenv/config'
 
-import Computer from './models/computer.model.js';
+import computerRoutes from './routes/computer.routes.js';
 
 const app = express()
 app.use(express.json());
-
-const port = 3000
 
 const connectDB = async () => {
   try {
@@ -35,26 +33,7 @@ app.get('/home', (req, res) => {
   res.send('Home Page')
 })
 
-app.get('/computers', async (req, res) => {
-  const computers = await Computer.find({}); 
-
-  res.send(computers);
-});
-
-app.post('/computers', async (req, res) => {
-  const {name, price} = req.body;
-  const newComputer = new Computer({
-    name,
-    price  
-  })
-
-  await newComputer.save();
-
-  res.status(200).send({
-    ok: true,
-    message: "Computer added successfully"
-  })
-})
+app.use("/computers", computerRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}`)
