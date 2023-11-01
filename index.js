@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import 'dotenv/config'
 
 import computerRoutes from './routes/computer.routes.js';
+import ingredientRoutes from './routes/ingredient.routes.js';
+import pizzaRoutes from './routes/pizza.routes.js';
+import menuRoutes from './routes/menu.routes.js';
 
 const app = express()
 app.use(express.json());
@@ -34,6 +37,9 @@ app.get('/home', (req, res) => {
 })
 
 app.use("/computers", computerRoutes);
+app.use("/ingredients", ingredientRoutes);
+app.use("/pizzas", pizzaRoutes);
+app.use("/menus", menuRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on port ${process.env.PORT}`)
